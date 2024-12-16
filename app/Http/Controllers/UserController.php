@@ -55,6 +55,7 @@ class UserController extends Controller
             ]);
             return response()->json([
                 'status' => 'success',
+                'data' => $user,
                 'message' => 'User registered successfully'
             ], 200);
         } catch (Exception $e) {
