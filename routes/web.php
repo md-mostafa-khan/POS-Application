@@ -10,32 +10,6 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerification;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-
-Route::post('/form-submit', function (Request $request) {
-    $email = $request->input('email');
-
-    if ($email) {
-        return response()->json([
-            "status" => "success",
-            "message" => "Form submitted successfully.",
-            "email" => $email,
-        ]);
-    } else {
-        return response()->json([
-            "status" => "failed",
-            "message" => "Form submission failed.",
-        ]);
-    }
-});
-
-
-Route::get('/user-agent', function (Request $request) {
-
-    $userAgent = $request->header('User-Agent');
-
-    return response($userAgent );
-});
 
 
 /*
@@ -81,10 +55,6 @@ Route::get('/productPage',[ProductController::class,'ProductPage'])->middleware(
 Route::get('/invoicePage',[InvoiceController::class,'InvoicePage'])->middleware([TokenVerification::class]);
 Route::get('/salePage',[InvoiceController::class,'SalePage'])->middleware([TokenVerification::class]);
 Route::get('/reportPage',[ReportController::class,'ReportPage'])->middleware([TokenVerification::class]);
-
-
-
-
 
 
 // Category API
